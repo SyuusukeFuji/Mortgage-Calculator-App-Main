@@ -1,13 +1,437 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+:root{
+  --Lime: hsl(61, 70%, 52%);
+  --Red: hsl(4, 69%, 50%);
+  --White: hsl(0, 0%, 100%);
+  --Slate100: hsl(202, 86%, 94%);
+  --Slate300: hsl(203, 41%, 72%);
+  --Slate500: hsl(200, 26%, 54%);
+  --Slate700: hsl(200, 24%, 40%);
+  --Slate900: hsl(202, 55%, 16%);
+  --Slate1100: hsl(201, 57%, 9%);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Plus Jakarta Sans", Verdana;
+  font-size: 16px;
+}
+
+body{
+  background-color: var(--Slate100);
+  max-width: 1440px;
+}
+
+main{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+#outer-card{
+  display: flex;
+  flex-direction: row;
+  height: 60vh;
+  width: 70vw;
+  background-color: var(--White);
+  border-radius: 1rem 1rem 1rem 1rem;
+}
+
+#data-side{
+  width: 50%;
+  height: 100%;
+  padding: 2rem;
+}
+
+#card-header{
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 1.5rem;
+
+}
+
+#app-title{
+  width:80%;
+  font-size: 1.4em;
+}
+
+#clear-bt{
+  width: 20%;
+  border: none;
+  background-color: var(--White);
+  color: var(--Slate500);
+  text-align: center;
+  text-decoration-line: underline;
+  transition: border-color 0.8s ease;
+  border: 1px solid transparent;
+  border-radius: 1.5rem;
+}
+
+#clear-bt:hover{
+  cursor: pointer;
+  border-color: var(--Slate700);
+  
+}
+
+.error-msgs{
+  font-size: small;
+  color: var(--Red);
+  visibility: hidden;
+}
+
+.on-visibility{
+  visibility: visible !important;
+}
+
+#amount-section{
+  width:100%;
+  margin-bottom: 1.15rem;
+}
+
+.vertical-content{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: start;
+}
+
+.data-title{
+  font-size: 0.85rem;
+  margin-bottom: 0.45rem;
+  color: var(--Slate700);
+  font-weight: 500;
+}
+
+.span-input{
+  display: flex;
+  flex-direction: row;
+  height: 3rem;
+  background-color: var(--Slate100);
+  border: 2px solid var(--Slate300);
+  border-radius: 0.5em;
+  align-items: center;
+  justify-content: space-around;
+  
+}
+
+.span-input:hover{
+  border-color: var(--Slate700);
+}
+
+.field-spans{
+  font-weight: 600;
+  
+}
+
+#pound-span{
+  margin-left: 0.8rem;
+}
+
+#amount-wrap{
+  width:100%;
+}
+
+.input-icons{
+  background-color: green;
+  margin-bottom: -5rem;
+  position: absolute;
+  top: 16.3rem;
+  
+}
+
+#input-amount{
+  width: 90%;
+  height: 100%;
+  margin-left: 1.5rem;
+  border: none;
+}
+
+#term-rate-section{
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 1.15rem;
+}
+
+#term-section, #rate-section{
+  width:100%;
+}
+
+.term-rate-inputs{
+  width: 90%;
+  height: 100%;
+  
+}
+
+#rate-span, #term-span{
+  margin-right: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.input-style{
+  border: none;
+  border-radius: 0.25rem;
+  padding-left: 0.8rem;
+  font-weight: bold;
+}
+
+.input-style:hover{
+  cursor: pointer;
+  border-color: var(--Slate700);
+}
+
+.span-input:focus-within{
+  background-color: var(--Lime);
+  border-color: var(--Lime);
+}
+
+
+#mortgage-type-section{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.radio-sections{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  border: 1px solid var(--Slate300);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  height: 2.5rem;
+}
+.radio-sections:hover{
+  border-color: var(--Lime);
+  cursor: pointer;
+}
+
+.checked-radio{
+  background-color: rgba(232, 255, 104, 0.322) !important;
+  border-color: var(--Lime) !important;
+}
+
+input[type="radio"]{
+  appearance: none;
+  accent-color: var(--Lime);
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--Lime);
+  border-radius: 50%;
+  transform: translateY(0.22em);
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before{
+  content: "";
+  width: 0.50rem;
+  height: 0.50rem;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--Lime);
+}
+
+input[type="radio"]:checked::before{
+  transform: scale(1);
+}
+
+input[type="radio"]:hover{
+  cursor: pointer;
+}
+
+.radio-text{
+  margin-left: 0.8rem;
+  font-weight: bold;
+}
+
+#result-bt{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 75%;
+  height: 2.55em;
+  background-color: var(--Lime);
+  color: var(--Slate900);
+  border: none;
+  border-radius: 3rem;
+  font-weight: 700;
+}
+
+#result-bt > img{
+  width: 7%;
+}
+#result-bt:hover{
+  cursor: pointer;
+  color: var(--White);
+}
+
+
+
+
+#results-side{
+  width: 50%;
+  height: 100%;
+  background-color: var(--Slate900);
+  color: var(--White);
+  border-radius: 0rem 1rem 1rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+#calculated-results{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+}
+
+.right-side-title{
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+
+.right-side-pgraph{
+  color: var(--Slate300);
+  font-size: 0.92rem;
+}
+
+#results-desc{
+  
+  line-height: 1.25rem;
+  
+}
+
+#results-wrapper{
+  width: 100%;
+  height: 55%;
+  background-color: var(--Slate1100);
+  border-radius: 0.8rem;
+  border-top: 2px solid var(--Lime);
+  padding: 2rem;
+  margin-bottom: 2.8rem; 
+}
+
+
+
+h3{
+  font-weight: 400;
+}
+
+.result-repayments{
+  color: var(--Lime);
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+#divider{
+  background-color: var(--Slate500);
+  height: 1px;
+  border: none;
+  margin-bottom: 1.5rem;
+}
+
+h4{
+  margin-top: 1.25rem;
+  font-size: 1.25rem;
+}
+
+.attribution { 
+  font-size: 11px; text-align: center; }
+.attribution a { 
+  color: hsl(228, 45%, 44%); }
+
+@media screen and (max-width: 810px) {
+  #outer-card{
+    width: 90vw;
+    height: 76vh;
+  }
+}
+
+@media screen and (max-width: 625px){
+  #outer-card{
+    flex-direction: column;
+    width: 100vw;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+  }
+
+  #data-side{
+    width: 100%;
+    border-radius: 0;
+  }
+
+  #result-bt{
+    width: 100%;
+  }
+
+  #button-pic{
+    margin-right: 0.5rem;
+   }
+
+  #results-side{
+    width: 100%;
+    border-radius: 0;
+  }
+
+  #results-desc{
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 375px){
+ #card-header{
+  flex-direction: column;
+  justify-content: left;
+  align-items: start;
+ }
+
+ #app-title{
+  margin-bottom: 1rem;
+ }
+
+ #clear-bt{
+  width: 40%;
+  text-align: left;
+ }
+ 
+  #term-rate-section{
+  flex-direction: column;
+ }
+
+ #mortgage-type-section{
+  margin-bottom: -0.5rem;
+ }
+
+ 
+
+ .right-side-title{
+  margin-bottom: 1rem;
+ }
 }
